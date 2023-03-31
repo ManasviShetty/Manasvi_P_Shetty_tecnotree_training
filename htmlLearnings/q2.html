@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+let a = 5;
+let b = 6;
+let c = 7;
+
+// check if it is a valid triangle
+if (a + b > c && b + c > a && c + a > b) {
+  // calculate the semi-perimeter
+  let s = (a + b + c) / 2;
+
+  // calculate the height of the triangle using Pythagorean formula
+  let height = (2 / a) * Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+  // calculate the area of the triangle
+  let area = (a * height) / 2;
+
+  // display the result
+  console.log("The area of the triangle is " + area.toFixed(2));
+} else {
+  console.log("Invalid triangle.");
+}
+</script>
+</body>
+</html>
+
+
+
+
+

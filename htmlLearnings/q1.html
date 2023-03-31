@@ -1,0 +1,39 @@
+<html>
+<head></head>
+<body>
+<script>
+let currentDate = new Date();
+
+// days of the week, starting from Sunday
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+// get day and time values
+let day = days[currentDate.getDay()];
+let hour = currentDate.getHours();
+let minute = currentDate.getMinutes();
+let second = currentDate.getSeconds();
+
+// add leading zero if single digit
+if (hour < 10) {
+  hour = "0" + hour;
+}
+
+if (minute < 10) {
+  minute = "0" + minute;
+}
+
+if (second < 10) {
+  second = "0" + second;
+}
+
+// format the time string
+let time = hour + ":" + minute + ":" + second;
+
+// display the day and time
+console.log("Today is " + day + ".");
+console.log("Current time is " + time + ".");
+</script>
+</body>
+</html>
+
+
