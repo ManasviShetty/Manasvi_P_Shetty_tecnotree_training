@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nth Largest Element</title>
+	<style>
+		input[type="text"] {
+			padding: 5px;
+			font-size: 16px;
+		}
+		input[type="button"] {
+			padding: 5px 10px;
+			font-size: 16px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Nth Largest Element</h1>
+	<label for="inputArray">Enter an array of numbers:</label>
+	<input type="text" id="inputArray" placeholder="e.g. 1, 2, 3, 4">
+	<br>
+	<label for="inputN">Enter the value of n:</label>
+	<input type="text" id="inputN" placeholder="e.g. 2">
+	<br>
+	<input type="button" value="Find Nth Largest Element" onclick="findNthLargest()">
+	<p id="result"></p>
+
+	<script>
+        // Function to find the nth largest element in an array
+function findNthLargest() {
+	// Get the input array as a string
+	var inputArray = document.getElementById("inputArray").value;
+
+	// Convert the input string to an array of numbers
+	var numbersArray = inputArray.split(",").map(Number);
+
+	// Get the value of n
+	var n = parseInt(document.getElementById("inputN").value);
+
+	// Sort the array in descending order
+	numbersArray.sort(function(a, b) {
+		return b - a;
+	});
+
+	// Find the nth largest element
+	var nthLargest = numbersArray[n - 1];
+
+	// Display the result on the page
+	document.getElementById("result").innerHTML = "The " + n + "th largest element is: " + nthLargest;
+}
+
+    </script>
+</body>
+</html>

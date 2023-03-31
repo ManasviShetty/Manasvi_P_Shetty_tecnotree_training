@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bubble Sort</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		.array {
+			display: flex;
+			margin-bottom: 20px;
+		}
+		.array-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 30px;
+			margin-right: 10px;
+			background-color: #ccc;
+			color: #333;
+			font-size: 18px;
+			font-weight: bold;
+			border-radius: 50%;
+		}
+		.sort-btn {
+			padding: 10px 20px;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: bold;
+			transition: background-color 0.2s ease-in-out;
+		}
+		.sort-btn:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="array"></div>
+		<button class="sort-btn">Sort</button>
+	</div>
+
+	<script >
+        // Get elements from HTML
+const arrayElem = document.querySelector('.array');
+const sortBtn = document.querySelector('.sort-btn');
+
+// Define the bubble sort function
+function bubbleSort(arr) {
+  let len = arr.length;
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < len - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let tmp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = tmp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+  return arr;
+}
+
+// Generate a random array of 10 elements
+const randomArray = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100));
+
+// Display the initial array on the page
+randomArray.forEach((item) => {
+  const elem = document.createElement('div');
+  elem.textContent = item;
+  elem.classList.add('array-item');
+  arrayElem.appendChild(elem);
+});
+
+// Add a click event listener to the sort button
+sortBtn.addEventListener('click', () => {
+  // Get the current array elements and convert them to an array of numbers
+  const array = Array.from(arrayElem.children).map((item) => Number(item.textContent));
+  // Sort the array using the bubble sort function
+  const sortedArray = bubbleSort(array);
+  // Update the array elements on the page with the sorted array
+  sortedArray.forEach((item, index) => {
+    arrayElem.children[index].textContent = item;
+  });
+});
+
+    </script>
+</body>
+</html>

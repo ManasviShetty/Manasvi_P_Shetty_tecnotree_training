@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Reverse Words</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #3e8e41;
+      }
+
+      p {
+        font-size: 20px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Reverse Words</h1>
+
+    <input type="text" id="inputString" placeholder="Enter a string" />
+    <br>
+    <button onclick="reverseWords()">Reverse</button>
+    <br>
+    <p id="outputString"></p>
+
+    <script>
+      function reverseWords() {
+        const inputString = document.getElementById("inputString").value;
+        const words = inputString.split(" ");
+        const reversedWords = words.reverse();
+        const reversedString = reversedWords.join(" ");
+        document.getElementById("outputString").textContent = reversedString;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Merge Sort Algorithm</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f2f2f2;
+      }
+
+      input[type="text"] {
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.25rem;
+        margin-bottom: 1rem;
+      }
+
+      button {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0062cc;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Merge Sort Algorithm</h1>
+      <label for="text">Enter a list of integers separated by commas:</label>
+      <input type="text" id="text" />
+      <button onclick="mergeSort()">Sort</button>
+      <p id="result"></p>
+    </main>
+    <script>
+      function mergeSort() {
+        const text = document.getElementById("text").value;
+        const numbers = text.split(",").map((str) => parseInt(str.trim()));
+        const sortedNumbers = sort(numbers);
+        document.getElementById("result").textContent = `The sorted list is: ${sortedNumbers.join(", ")}.`;
+      }
+
+      function sort(numbers) {
+        if (numbers.length <= 1) {
+          return numbers;
+        }
+        const middleIndex = Math.floor(numbers.length / 2);
+        const leftNumbers = numbers.slice(0, middleIndex);
+        const rightNumbers = numbers.slice(middleIndex);
+        const sortedLeftNumbers = sort(leftNumbers);
+        const sortedRightNumbers = sort(rightNumbers);
+        return merge(sortedLeftNumbers, sortedRightNumbers);
+      }
+
+      function merge(leftNumbers, rightNumbers) {
+        const mergedNumbers = [];
+        let leftIndex = 0;
+        let rightIndex = 0;
+        while (leftIndex < leftNumbers.length && rightIndex < rightNumbers.length) {
+          if (leftNumbers[leftIndex] <= rightNumbers[rightIndex]) {
+            mergedNumbers.push(leftNumbers[leftIndex]);
+            leftIndex++;
+          } else {
+            mergedNumbers.push(rightNumbers[rightIndex]);
+            rightIndex++;
+          }
+        }
+        while (leftIndex < leftNumbers.length) {
+          mergedNumbers.push(leftNumbers[leftIndex]);
+          leftIndex++;
+        }
+        while (rightIndex < rightNumbers.length) {
+          mergedNumbers.push(rightNumbers[rightIndex]);
+          rightIndex++;
+        }
+        return mergedNumbers;
+      }
+    </script>
+  </body>
+</html>

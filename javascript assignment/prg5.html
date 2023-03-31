@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Binary Search</title>
+  </head>
+  <body>
+    <h1>Binary Search</h1>
+
+    <p>Array: <span id="array"></span></p>
+    <p>Target: <input type="number" id="target" /></p>
+    <p>Result: <span id="result"></span></p>
+
+    <script>
+      function binarySearch(array, target) {
+        let left = 0;
+        let right = array.length - 1;
+
+        while (left <= right) {
+          let mid = Math.floor((left + right) / 2);
+          if (array[mid] === target) {
+            return mid;
+          } else if (array[mid] < target) {
+            left = mid + 1;
+          } else {
+            right = mid - 1;
+          }
+        }
+
+        return -1;
+      }
+
+      const numbers = [1, 3, 5, 7, 9];
+      const target = document.getElementById("target").value;
+      const result = binarySearch(numbers, target);
+
+      document.getElementById("array").textContent = numbers.join(", ");
+      document.getElementById("result").textContent = result !== -1 ? `Found at index ${result}` : "Not found";
+    </script>
+  </body>
+</html>

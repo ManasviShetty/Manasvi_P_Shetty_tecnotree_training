@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sort an Array of Objects</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid black;
+      }
+      
+      th {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sort an Array of Objects</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alice</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>Bob</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Charlie</td>
+          <td>40</td>
+        </tr>
+        <tr>
+          <td>David</td>
+          <td>25</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      const people = [
+        { name: "Alice", age: 30 },
+        { name: "Bob", age: 20 },
+        { name: "Charlie", age: 40 },
+        { name: "David", age: 25 },
+      ];
+
+      function sortByProperty(arr, prop) {
+        return arr.sort((a, b) => a[prop] - b[prop]);
+      }
+
+      const tableBody = document.querySelector("tbody");
+      const sortedPeople = sortByProperty(people, "age");
+
+      sortedPeople.forEach(person => {
+        const row = document.createElement("tr");
+        const nameCell = document.createElement("td");
+        const ageCell = document.createElement("td");
+        nameCell.textContent = person.name;
+        ageCell.textContent = person.age;
+        row.appendChild(nameCell);
+        row.appendChild(ageCell);
+        tableBody.appendChild(row);
+      });
+    </script>
+  </body>
+</html>
