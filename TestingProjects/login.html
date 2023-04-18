@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Login Page</title>
+		<style>
+			.container {
+			  max-width: 500px;
+			  margin: 0 auto;
+			  padding: 50px;
+			  border-radius: 10px;
+			  background-color: #f0f0f0;
+			  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+			}
+
+			h1 {
+			  text-align: center;
+			  color: #333;
+			}
+
+			.form {
+			  display: flex;
+			  flex-direction: column;
+			  margin-top: 20px;
+			}
+
+			label {
+			  font-weight: bold;
+			  margin-bottom: 5px;
+			  color: #555;
+			}
+
+			input[type="text"],
+			input[type="password"] {
+			  padding: 10px;
+			  border-radius: 5px;
+			  border: none;
+			  margin-bottom: 20px;
+			}
+
+			#error-message {
+			  color: red;
+			  margin-bottom: 20px;
+			}
+
+			button {
+			  padding: 10px 20px;
+			  border: none;
+			  border-radius: 5px;
+			  cursor: pointer;
+			  margin-bottom: 10px;
+			}
+
+			.login-button {
+			  background-color: #2ecc71;
+			  color: #fff;
+			}
+
+			.logout-button {
+			  background-color: #e74c3c;
+			  color: #fff;
+			}
+
+			.forgot-password-button {
+			  background-color: #3498db;
+			  color: #fff;
+			  margin-top: 10px;
+			}
+		</style>
+		<script>
+			function checkFields() {
+				const username = document.getElementById('username').value;
+				const password = document.getElementById('password').value;
+
+				const loginButton = document.getElementById('login-button');
+
+				if (username.trim() === '' || password.trim() === '') {
+					loginButton.disabled = true;
+				} else {
+					loginButton.disabled = false;
+				}
+			}
+
+			function login() {
+				const username = document.getElementById('username').value;
+				const password = document.getElementById('password').value;
+
+				// Check if username and password are correct (example check)
+				if (username === 'admin' && password === 'password') {
+					alert('Login successful!');
+					document.getElementById('error-message').textContent = '';
+					window.location.href = 'home.html'; // Redirect to home page
+				} else {
+					document.getElementById('error-message').textContent = 'Incorrect username or password';
+				}
+			}
+
+			function forgotPassword() {
+				window.location.href = 'reset-password.html'; // Redirect to reset password page
+			}
+
+			function logout() {
+				alert('Logout successful!');
+			}
+		</script>
+
+	</head>
+    <body>
+        <div class="container">
+            <h1>Login</h1>
+            <div class="form">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" onkeyup="checkFields()">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" onkeyup="checkFields()">
+                <div id="error-message"></div>
+                <button class="login-button" id="login-button" onclick="login()" disabled>Login</button>
+                <button class="logout-button" onclick="logout()">Logout</button>
+                <a href="#" class="forgot-password-button" onclick="forgotPassword()">Forgot Password?</a>
+            </div>
+        </div>
+        
+        <script>
+            function checkFields() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const loginButton = document.getElementById('login-button');
+                if (username && password) {
+                    loginButton.disabled = false;
+                } else {
+                    loginButton.disabled = true;
+                }
+            }
+    
+            function login() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+    
+                // Check if username and password are correct (example check)
+                if (username === 'admin' && password === 'password') {
+                    alert('Login successful!');
+                    
+                } else {
+                    document.getElementById('error-message').textContent = 'Incorrect username or password';
+                }
+            }
+    
+            function forgotPassword() {
+                window.location.href = 'reset-password.html'; // Redirect to reset password page
+            }
+    
+            function logout() {
+                alert('Logout successful!');
+            }
+        </script>
+    </body>
+</html>    
